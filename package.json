@@ -1,0 +1,22 @@
+{
+  "name": "ci-cd",
+  "version": "1.0.0",
+  "description": "Implementation of ci/cd",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/indsidcoder/ci-cd.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/indsidcoder/ci-cd/issues"
+  },
+  "homepage": "https://github.com/indsidcoder/ci-cd#readme",
+  "dependencies": {
+    "jest": "^29.7.0"
+  }
+}
