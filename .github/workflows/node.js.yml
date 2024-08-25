@@ -31,7 +31,8 @@ jobs:
 
       - name: Run Docker Compose
         run: docker-compose up --build -d
-        env: API_URL=http://wiremock:8080/
+        env: 
+	        API_URL=http://wiremock:8080/
 
       - name: Wait for services to be ready
         run: |
