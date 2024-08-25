@@ -40,11 +40,6 @@ jobs:
       - name: Run Docker Compose
         run: docker-compose up --build
 
-      - name: Wait for services to be ready
-        run: |
-          echo "Waiting for services to be ready..."
-          sleep 10  # Wait for a few seconds to ensure services are up
-
       - name: Run Tests
         run: npm run cucumber
 
