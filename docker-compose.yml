@@ -1,0 +1,20 @@
+version: "3"
+services:
+  app:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - API_URL=http://wiremock:8080/
+    depends_on:
+      - wiremock
+    ports:
+      - "5000:5000"
+
+  wiremock:
+    image: wiremock/wiremock  
+    ports:
+      - "8080:8080"
+
+    volumes:
+      - ./mock-endpoints/mappings:/home/wiremock/mappings

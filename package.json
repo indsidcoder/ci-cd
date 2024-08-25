@@ -1,10 +1,13 @@
 {
   "name": "ci-cd",
+  "type": "module",
   "version": "1.0.0",
   "description": "Implementation of ci/cd",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "dev": "node src/index.js",
+    "cucumber": "cucumber-js ./features/"
   },
   "repository": {
     "type": "git",
@@ -17,6 +20,15 @@
   },
   "homepage": "https://github.com/indsidcoder/ci-cd#readme",
   "dependencies": {
-    "jest": "^29.7.0"
+    "@cucumber/cucumber": "^10.9.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jest": "^29.7.0",
+    "node-fetch": "^3.3.2"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.9.0",
+    "eslint": "^9.9.0",
+    "globals": "^15.9.0"
   }
 }
