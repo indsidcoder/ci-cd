@@ -38,7 +38,10 @@ jobs:
         run: npm install
 
       - name: Run Docker Compose
-        run: docker-compose up --build
+        run: docker-compose up --build -d
+
+      - name: Verify Docker Compose status
+        run: docker-compose ps
 
       - name: Run Tests
         run: npm run cucumber
