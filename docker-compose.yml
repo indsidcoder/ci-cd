@@ -1,5 +1,18 @@
-version: "3"
+version: "4"
 services:
+  test-runner: 
+    networks:
+      - service-test
+    build:
+      context: .
+      dockerfile: Dockerfile.test
+    stdin_open: true
+    tty: true
+    depends_on:
+      app:
+        condition: service_healthy
+      wiremock:
+        condition: service_healthy
   app:
     build: 
       context: .
@@ -10,11 +23,27 @@ services:
       - wiremock
     ports:
       - "5000:5000"
-
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/api/getWeather"]
+      interval: 10s
+      retries: 5
+      start_period: 60s
+      timeout: 15s
+    networks:
+      - service-test
   wiremock:
     image: wiremock/wiremock  
     ports:
       - "8080:8080"
-
     volumes:
       - ./mock-endpoints/mappings:/home/wiremock/mappings
+    networks:
+      - service-test
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/__admin"]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 5s
+networks:
+  service-test:

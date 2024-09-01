@@ -29,4 +29,12 @@ app.get("/api/getWeather", async (req, res) => {
   res.send(data);
 });
 
+app.get("/api/insert-data", async (req, res) => {
+  //   res.json({
+  //     message: "API - 👋🌎🌍🌏",
+  //   });
+  const data = await getData();
+  res.send(data);
+});
+
 export default app;

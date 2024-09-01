@@ -7,7 +7,7 @@
   "scripts": {
     "test": "jest",
     "dev": "node src/index.js",
-    "cucumber": "cucumber-js ./features/"
+    "cucumber": "npx cucumber-js"
   },
   "repository": {
     "type": "git",
