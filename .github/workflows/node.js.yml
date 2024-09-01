@@ -41,7 +41,7 @@ jobs:
       - name: Verify Docker Compose status
         run: docker-compose ps
         
-       - name: Run Cucumber tests
+      - name: Run Cucumber tests
         run: docker-compose up test-runner
         continue-on-error: true
 
