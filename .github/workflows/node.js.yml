@@ -32,6 +32,19 @@ jobs:
       - name: Build and start Docker Compose
         run: docker-compose -f docker-compose.yml up --build -d
 
+      - name: Wait for services to be ready
+        run: |
+          echo "Waiting for services to be ready..."
+          sleep 30  # Wait for a few seconds to ensure services are up
+        continue-on-error: true
+
+      - name: Verify Docker Compose status
+        run: docker-compose ps
+        
+      - name: Run Cucumber tests
+        run: docker-compose up test-runner
+        continue-on-error: true
+
       - name: Display logs for debugging (optional)
         if: failure()
         run: docker-compose logs
